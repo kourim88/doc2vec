@@ -15,8 +15,8 @@ from gensim.models.doc2vec import LabeledSentence
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 
-INPUT_DOC_DIR = r'C:\test\IBM\giji\before'
-OUTPUT_MODEL = r'C:\test\IBM\giji\doc2vec_s400m1i10.model'
+INPUT_DOC_DIR = r'C:\test\doc2vec\before'
+OUTPUT_MODEL = r'C:\test\doc2vec\doc2vec_s400m1i10.model'
 PASSING_PRECISION = 93
 
 # 全てのファイルのリストを取得
