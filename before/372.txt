@@ -1,0 +1,20 @@
+
+Windows Subsystem for Linux
+
+Windows Subsystem for Linux (WSL) とは、Linuxの（ELFフォーマット形式の）バイナリ実行ファイルをWindows 10上でネイティブ実行するための互換レイヤーである。
+2016年3月30日（米国時間）に開催されたマイクロソフト社のBuild 2016カンファレンスで発表され、同年8月2日（日本時間8月3日）に公開されたWindows 10の大型アップデートである（Windows 10のRedstone 1版(RS1)の）Windows 10 Anniversary Updateによって提供が開始された。
+
+マイクロソフトとカノニカルの提携により、Ubuntu 14.04 "Trusty Tahr"イメージをWindows 10ユーザーのローカルマシンにダウンロードして展開し、そのイメージに含まれるツールやユーティリティーをWSL上でネイティブに実行することが可能になった。WSLはマイクロソフトが開発した（Linuxカーネルのコードが含まれていない）Linux互換のカーネルインタフェースとともに、その上で動くUbuntuに由来するユーザーモードバイナリを提供する。これはBashシェルやコマンド言語、ネイティブLinuxコマンドラインツール（sed、awkなど）やプログラミング言語インタプリタ（Ruby、Pythonなど）を含む。
+
+WSLは全てのLinuxソフトウェアを動かせるわけではない。例えばGUI用のソフトや、WSLの提供しないLinuxカーネルサービスを必要とするものは不可能だ。しかしながら、画面描写に関わるX Window Systemアプリケーションを、XmingやVcXsrv Windows X Serverなどの外部Xサーバと共に起動することで、この欠点を軽減することが出来る。Windowsコンピュータ上でLinuxソフトウェアを直接起動するための最善の手段は完全な仮想マシンであるが、WSLはユーザーがWindowsアプリとLinuxツール（厳密にはLinuxディストリビューションの1つであるUbuntu上で動作可能なツール）を同一ファイルセット上で利用できるようにしながら、完全な仮想マシンよりも少ないリソースしか利用しない。
+
+WSLはWindows 10の64ビット（x64）版（ただしEnterprise LTSBとSを除く）のみで、Windows 10 Anniversary Update以降のバージョンから利用できる。他方、Windows 10 Anniversary Updateとほぼ同時にリリースされたサーバ用OSのWindows Server 2016には搭載されていない。WSLは、Windows 10 Mobile上でいくつかのAndroid用アプリを実行できるようにするためのプロジェクトだがリリースされることはなかった、Project Astoriaを発祥とする。WSLは2016年4月6日にリリースされたWindows 10 Insider Preview ビルド 14316において最初に公開された。
+
+マイクロソフトはWSLを、「主として開発者、特にWeb開発者やオープンソースプロジェクトを利用する開発者のためのツール」としてイメージしている。
+
+Windows 10上で実行可能なLinuxのディストリビューションは Ubuntu のみとなっている。WSLの提供開始当初の Ubuntu のバージョンは14.04であったが、2017年4月11日に公開されたWindows 10の大型アップデートである "Windows 10 Creators Update" (Redstone 2)では、Ubuntu のバージョンは 16.04 "Xenial Xerus" に変更されている。
+
+（あらかじめXmingなどのXサーバーをWindows上で起動しておく）
+
+
+

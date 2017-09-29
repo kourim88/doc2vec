@@ -1,0 +1,58 @@
+
+NVM Express
+
+NVM Express (NVMe) もしくは NVMHCI (Non-Volatile Memory Host Controller Interface) は、PCI Express (PCIe) を通じて、不揮発性ストレージメディアを接続するための論理デバイスインターフェースの規格であり、シリアルATAに代わる次世代の接続インターフェース規格である。2016年6月現在の最新規格はRev.1.2.1。
+
+NVMは、SSDの中に広く用いられているフラッシュメモリ、つまり"non-volatile memory"の頭文字を取ったものである。論理デバイスインターフェースとしてのNVM Expressは、近代的なCPU、プラットフォーム、アプリケーションの並列性を反映するように、フラッシュメモリーベースのストレージとして、その低いレイテンシ、内部並列性を最大限利用するようデザインされた。
+
+それらのデザインによって、NVM Expressは、ホストのハードウェアとソフトウェアを最大限利用することで、よりモダンなSSDで見られる並列性が引き出される。その結果、NVM Expressは、それ以前の論理デバイスインターフェースに比較して、I/Oオーバーヘッドを下げ、様々なパフォーマンスの改善をもたらしたほか、並列度の高い長いコマンドキューと、低レイテンシをもたらす。
+
+現在NVM Expressデバイスは
+が存在する。SATA Expressストレージデバイスと、M.2規格は、コンピューター内で、拡張カード上に搭載する場合、NVM Expressの論理デバイスインターフェースとしてもサポートされる。
+
+シリアルATA(SATA)は主に機械的ディスク、HDD（Hard Disk Drive）用に設計されたものであったため、SATAの物理的な限界、転送速度である6Gbpsを超えることは出来ず、SATAの最大スループットによってSSDの性能が制限されてしまうこととなった。
+
+NVMe規格制定前に、ハイエンドのSSD中にはPCI Expressバスを使用した、非標準仕様のインターフェースで接続するものもあったが、接続のためには各SSDメーカーによるドライバが必要であった。この規格の制定によって、各メーカーが、特定のインターフェースのためにドライバを設計する必要はなくなった。
+
+The first details of a new standard for accessing non-volatile memory emerged at the Intel Developer Forum 2007, when NVMHCI was shown as the host-side protocol of a proposed architectural design that had Open NAND Flash Interface Working Group (ONFI) on the memory (flash) chips side. A NVMHCI working group led by Intel was formed that year. The NVMHCI 1.0 specification was completed in April 2008 and released on Intel's web site.
+
+Technical work on NVMe began in the second half of 2009. The NVMe specifications were developed by the NVM Express Workgroup, which consists of more than 90 companies; Amber Huffman of Intel was the working group's chair. Version 1.0 of the specification was released on , while version 1.1 of the specification was released on . Major features added in version 1.1 are multi-path I/O (with namespace sharing) and arbitrary-length scatter-gather I/O. It is expected that future revisions will significantly enhance namespace management. Because of its feature focus, NVMe 1.1 was initially called "Enterprise NVMHCI". An update for the base NVMe specification, called version 1.0e, was released in January 2013. In June 2011, a Promoter Group led by seven companies was formed.
+
+The first commercially available NVMe chipsets were released by Integrated Device Technology (89HF16P04AG3 and 89HF32P08AG3) in August 2012. The first NVMe drive, Samsung's XS1715 enterprise drive, was announced in July 2013; according to Samsung, this drive supported 3 GB/s read speeds, six times faster than their previous enterprise offerings. The LSI SandForce SF3700 controller family, released in November 2013, also supports NVMe. Sample engineering boards with the PCI Express 2.0 ×4 model of this controller found 1,800 MB/sec read/write sequential speeds and 150K/80K random IOPS. A Kingston HyperX "prosumer" product using this controller was showcased at the Consumer Electronics Show 2014 and promised similar performance. In June 2014, Intel announced their first NVM Express products, the Intel SSD data center family that interfaces with the host through PCI Express bus, which includes the DC P3700 series, the DC P3600 series, and the DC P3500 series. , NVMe drives are commercially available.
+
+In March 2014, the group incorporated to become NVM Express, Inc., which consists of more than 65 companies from across the industry. NVM Express specifications are owned and maintained by NVM Express, Inc., which also promotes industry awareness of NVM Express as an industry-wide standard. NVM Express, Inc. is directed by a thirteen-member board of directors selected from the Promoter Group, which includes Cisco, Dell, EMC, HGST, Intel, Micron, Microsoft, NetApp, Oracle, PMC, Samsung, SanDisk and Seagate.
+
+翻訳
+
+非揮発性メモリアクセスの新規格の詳細が初めて公開されたのは、インテル デベロッパー フォーラム 2007 で、提案アーキテクチャのホスト側プロトコルとしてNVMHCI、メモリ (フラッシュ) チップ側プロトコルとしてOpen NAND フラッシュ インターフェイス作業グループ (ONFI)が示された。インテル率いる NVMHCI ワーキング グループは、その年に設立された。NVMHCI 1.0 仕様は、2008 年 4 月に完成し、インテルの web サイトにリリースされた。
+
+NVMe の技術的な仕事は、2009 年の後半に始まった。NVMe 仕様よりも 90 社; NVM エクスプレス ワークグループによって開発されました。インテルの琥珀ハフマンは、ワーキング ・ グループの椅子だった。2011-03 - 01 仕様のバージョン 1.0 がリリースされた 仕様のバージョン 1.1 は 2012-10-11 発売中。[バージョン 1.1 で追加された 7] 主要な機能は、(名前空間の共有) とマルチパス I/O と任意の長さのスキャッター/ギャザー I/O です。今後の改訂版には名前空間の管理が向上が期待されます。 機能の重点のため、NVMe 1.1 は「エンタープライズ NVMHCI」と最初にコールされました。バージョン 1.0 e-と呼ばれる、基本の NVMe 仕様のための更新は、2013 年 1 月にリリースされました。2011 年 6 月に 7 社を率いるプロモーター グループが形成されました。
+
+最初の市販 NVMe チップセットは、統合デバイス技術 (89HF16P04AG3 および 89HF32P08AG3) で 2012 年 8 月にリリースされました。2013 年 7 月に発表された の最初の NVMe ドライブ、サムスンの XS1715 エンタープライズ ・ ドライブ、サムスンによるとこのドライブ サポート 3 GB/s の読み取り速度、6 倍の以前のエンタープライズ製品よりも高速です。LSI SandForce SF3700 コント ローラー家族もサポートしている NVMe 2013 年 11 月にリリースします。このコント ローラーの PCI Express 2.0 × 4 モデル サンプル工学板は、1,800 MB/秒読み取り/書き込みシーケンシャル速度と 150 K/80 K ランダム IOPS を発見しました。このコント ローラーを使用して キングストン HyperX「プロシューマー」製品は消費者電子ショー 2014 出展し、同様の性能を約束しました。2014 年 6 月、インテルの最初の NVM Express 製品を発表した、インテル SSD データ センター家族 DC P3700 シリーズ、DC P3600 シリーズ、DC P3500 シリーズを含む PCI Express バスを介してホストとのインターフェイスとなります。 2014年11現在、NVMe ドライブは、市販されています。
+
+2014 年 3 月の NVM エクスプレス株式会社業界全体 65 以上の会社から成っているどの 2014年11現在になるグループが組み込まれています。NVM エクスプレス仕様は所有、また業界標準として NVM Express の業界の意識を促進するエクスプレス社 NVM によって維持します。株式会社 NVM エクスプレスは 13 メンバー取締役会シスコ、デル、EMC、HGST、インテル、マイクロン、マイクロソフト、NetApp、Oracle、PMC、サムスン、サンディスク、シーゲイトは、プロモーターのグループから選択した監督です。
+
+Advanced Host Controller Interface (AHCI) には、その従来の実績から幅広いソフトウェアとの互換性があるという利点があるが、PCI Expressバスに接続したSSDでは性能を発揮しきれないという欠点がある。なぜかといえば、そのインターフェースとしての論理的な設計が、当時一般的であったハードディスクの諸特性にもとづいてCPUやメモリサブシステムとつなぐことが想定されたものだからである。結果として、SSDでは効率の低下を引き起こすことがある。SSDの諸特性が、ハードディスクと比べると半導体メモリ寄りだからである。
+
+The NVMe device interface has been designed from the ground up, capitalizing on the low latency and parallelism of PCI Express SSDs, and complementing the parallelism of contemporary CPUs, platforms and applications. At a high level, the basic advantages of NVMe over AHCI relate to its ability to exploit parallelism in host hardware and software, manifested by the differences in command queue depths, efficiency of interrupt processing, the number of uncacheable register accesses, etc., resulting in various performance improvements.
+
+The table below summarizes high-level differences between the NVMe and AHCI logical device interfaces.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
