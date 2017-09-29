@@ -32,28 +32,6 @@ def read_document(path):
         # print f.read()
         return f.read()
 
-# 青空文庫ファイルから作品部分のみ抜き出す
-def trim_doc(doc):
-    lines = doc.splitlines()
-    valid_lines = []
-    is_valid = False
-    horizontal_rule_cnt = 0
-    break_cnt = 0
-    for line in lines:
-        if horizontal_rule_cnt < 2 and '-----' in line:
-            horizontal_rule_cnt += 1
-            is_valid = horizontal_rule_cnt == 2
-            continue
-        if not(is_valid):
-            continue
-        if line == '':
-            break_cnt += 1
-            is_valid = break_cnt != 3
-            continue
-        break_cnt = 0
-        valid_lines.append(line)
-    return ''.join(valid_lines)
-
 # 文章から単語に分解して返す
 def split_into_words(doc, name=''):
     mecab = MeCab.Tagger("-Ochasen")
@@ -78,8 +56,9 @@ def corpus_to_sentences(corpus):
 
 # 学習
 def train(sentences):
-    model = models.Doc2Vec(sentences, size=400, min_count=1, iter=10)  #(sentences, size=50, min_count=1, iter=10)　　(sentences, size=50, alpha=0.0015, sample=1e-4, min_count=1, workers=4)  #   #, size=50, alpha=0.0015, sample=1e-4, min_count=2, workers=2)
     print('\n訓練開始')
+    model = models.Doc2Vec(sentences, size=400, min_count=1, iter=10)  #(sentences, size=50, min_count=1, iter=10)　　(sentences, size=50, alpha=0.0015, sample=1e-4, min_count=1, workers=4)  #   #, size=50, alpha=0.0015, sample=1e-4, min_count=2, workers=2)
+
     # print "len(sentences):", len(sentences)
     # for epoch in range(20):
     #     print('Epoch: {}'.format(epoch + 1))
