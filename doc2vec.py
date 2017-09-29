@@ -17,7 +17,12 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 
 INPUT_DOC_DIR = r'C:\test\doc2vec\before'
 OUTPUT_MODEL = r'C:\test\doc2vec\doc2vec_s400m1i10.model'
+stopworddir = r'C:\test\doc2vec\result\mecab_stopword.txt'
 PASSING_PRECISION = 93
+
+ofile = open(stopworddir,"r")
+ja_stopword = ofile.read().split()
+ofile.close()
 
 # 全てのファイルのリストを取得
 def get_all_files(directory):
@@ -28,15 +33,23 @@ def get_all_files(directory):
 # ファイルから文章を返す
 def read_document(path):
     # print path
-    with codecs.open(path, 'r', encoding='shift_jisx0213', errors='ignore') as f:  # , encoding='sjis' , errors='ignore'
+    # with codecs.open(path, 'r', encoding='utf-8', errors='ignore') as f:  # , encoding='sjis' , errors='ignore'
+    with open(path, "r") as f:
         # print f.read()
         return f.read()
 
 # 文章から単語に分解して返す
 def split_into_words(doc, name=''):
+    for word in ja_stopword:
+        # print word
+        try:
+            doc = doc.replace(word, "").replace("\t", "").replace("\n", "")  # .replace("	","")
+        except IndexError, e:
+            print "error!", e
+            print file
+            continue
     mecab = MeCab.Tagger("-Ochasen")
-    valid_doc = trim_doc(doc)
-    lines = mecab.parse(doc.encode('utf-8')).splitlines()   #.encode('utf-8')
+    lines = mecab.parse(doc).splitlines()   #.encode('utf-8')
     words = []
     for line in lines:
         chunks = line.split('\t')
@@ -51,13 +64,13 @@ def corpus_to_sentences(corpus):
     docs = [read_document(x) for x in corpus]   #.decode('sjis')
     for idx, (doc, name) in enumerate(zip(docs, corpus)):
         sys.stdout.write('\r前処理中 {} / {}'.format(idx, len(corpus)))
-        name = name.split("\\")[-1].decode("shift_jisx0213")
+        name = name.split("\\")[-1]  #.decode("shift_jisx0213")
         yield split_into_words(doc, name)
 
 # 学習
 def train(sentences):
     print('\n訓練開始')
-    model = models.Doc2Vec(sentences, size=400, min_count=1, iter=10)  #(sentences, size=50, min_count=1, iter=10)　　(sentences, size=50, alpha=0.0015, sample=1e-4, min_count=1, workers=4)  #   #, size=50, alpha=0.0015, sample=1e-4, min_count=2, workers=2)
+    model = models.Doc2Vec(sentences, size=50, min_count=1, iter=10, workers=4)  #(sentences, size=50, min_count=1, iter=10)　　(sentences, size=50, alpha=0.0015, sample=1e-4, min_count=1, workers=4)  #   #, size=50, alpha=0.0015, sample=1e-4, min_count=2, workers=2)
 
     # print "len(sentences):", len(sentences)
     # for epoch in range(20):
